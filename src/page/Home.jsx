@@ -75,32 +75,23 @@ function validacion(codigo) {
   let pila = ["$"];
   let contador = 0;
   let infoPila = [];
-
   pila[1] = "S";
 
   const pushInfo = (X) => {
-    console.log("Push:", X);
-
     infoPila.push(`Push: ${X} -- ${codigo.slice(contador)}`);
   };
   const popInfo = (X) => {
-    console.log("Pop:", X);
     infoPila.push(`Pop: ${X} --  ${codigo.slice(contador)}`);
   };
   while (pila.length > 0) {
     const X = pila.pop();
-    console.log("X:", X);
-    console.log("Pila:", pila);
-
     if (!X) {
       break;
     }
-
     const a = codigo[contador];
-    console.log("a:", a);
 
     if (X === "$") {
-      infoPila.push("Completo.");
+      infoPila.push("TERMINADO");
       break;
     }
 
@@ -118,7 +109,7 @@ function validacion(codigo) {
         }
       } else {
         infoPila.push(
-          `Error: No se pudo encontrar una producción válida para ${X}.`
+          `Error: No encontró algo válido para ${X}.`
         );
         return { esValida: false, infoPila };
       }
@@ -127,9 +118,9 @@ function validacion(codigo) {
       return { esValida: false, infoPila };
     }
   }
-
   return { esValida: contador === codigo.length, infoPila };
 }
+
 // automata estado: 3 - 123 ; inicio: 1; aceptacion : 2123;
 function esNoTerminal(simbolo) {
   const terminales = ["automata", "estado", ";", "[", ",", "]"];

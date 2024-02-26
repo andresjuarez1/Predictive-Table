@@ -5,8 +5,9 @@ function Example() {
     {
       content: [
         {
-          subtitle:"EJEMPLO",
-          code: `automata estado: 3 - 123 ; inicio: 1; aceptacion : 2123;`,  
+
+          subtitle: "EJEMPLO",
+          code: `automata estado: 3 - 123 ; inicio: 1; aceptacion : 2123;`,
         },
       ],
     },
@@ -14,19 +15,21 @@ function Example() {
 
   return (
     <>
-      <div>
+      <center>
         <div>
-          {ExamplesCodes.map((example, index) => {
-            return (
-              <CodeExamples
-                key={index}
-                title={example.title}
-                content={example.content}
-              />
-            );
-          })}
+          <div>
+            {ExamplesCodes.map((example, index) => {
+              return (
+                <CodeExamples
+                  key={index}
+                  title={example.title}
+                  content={example.content}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </center >
     </>
   );
 }
